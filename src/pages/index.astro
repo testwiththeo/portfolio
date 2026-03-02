@@ -465,6 +465,75 @@ const skillGroups = [
       </div>
     </section>
 
+    <!-- Articles Preview -->
+    <section
+      id="articles"
+      class="py-16 scroll-reveal border-t border-[var(--border-color)]"
+    >
+      <div class="mb-12">
+        <h2
+          class="text-[14px] md:text-[16px] font-mono font-medium tracking-[0.1em] text-[var(--foreground-muted)] uppercase mb-3 text-center md:text-left"
+        >
+          thoughts.
+        </h2>
+        <h3
+          class="text-[36px] sm:text-[44px] md:text-[48px] font-serif font-medium tracking-[-0.03em] leading-[1.0] text-center md:text-left"
+        >
+          Selected <br />
+          <span class="text-[var(--foreground-primary)]">Articles.</span>
+        </h3>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-sm border border-[var(--border-color)] bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.03)] transition-all duration-500 hover:border-[var(--foreground-primary)]"
+      >
+        <a
+          href="/blog/how-to-build-a-climate-ready-data-stack"
+          class="flex flex-col md:flex-row items-stretch"
+        >
+          <div class="w-full md:w-[35%] overflow-hidden">
+            <img
+              src="/images/gallery/manwithcode.png"
+              alt="QA Engineering Article"
+              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex flex-1 flex-col justify-center p-8 md:p-10">
+            <div class="mb-4 flex items-center gap-3">
+              <span
+                class="text-[10px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] px-2 py-1 border border-[var(--border-color)]"
+              >
+                Quality Engineering
+              </span>
+              <span
+                class="text-[11px] font-serif text-[var(--foreground-muted)] italic"
+              >
+                5 min read
+              </span>
+            </div>
+            <h4
+              class="text-[24px] md:text-[28px] font-serif font-medium leading-[1.1] tracking-[-0.02em] text-[var(--foreground-primary)] mb-3 group-hover:underline underline-offset-4"
+            >
+              The Art of Intentional Breaking: Why QA Starts Before the First
+              Line of Code
+            </h4>
+            <p
+              class="text-[14px] md:text-[15px] font-sans font-light leading-[1.6] text-[var(--foreground-secondary)] line-clamp-2"
+            >
+              True quality engineering isn't just about finding bugs; it is
+              about architecting systems that are resilient by design. Exploring
+              the shift from reactive testing to proactive quality assurance.
+            </p>
+            <div
+              class="mt-6 flex items-center gap-2 text-[12px] font-mono font-medium uppercase tracking-tight text-[var(--foreground-primary)] group-hover:gap-4 transition-all"
+            >
+              Read article <span set:html={icons.arrow}></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- Experience -->
     <section id="experience" class="py-10 scroll-reveal">
       <h2 class="text-[16px] font-bold text-[var(--foreground-primary)] mb-1.5">
