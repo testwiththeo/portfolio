@@ -1,0 +1,219 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+
+const title =
+    "The Art of Intentional Breaking: Why QA Starts Before the First Line of Code";
+const description =
+    "True quality engineering isn't just about finding bugs; it is about architecting systems that are resilient by design. Exploring the shift from reactive testing to proactive quality assurance.";
+const author = "Theodore";
+const publishedDate = "March 2, 2026";
+const readTime = "5 min";
+const category = "Quality Engineering";
+const image = "/images/gallery/manwithcode.png";
+---
+
+<BlogLayout title={title} description={description}>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Minimalist Navigation -->
+    <header
+        class="w-full max-w-[960px] mx-auto px-6 py-10 flex justify-between items-center bg-transparent relative z-10"
+    >
+        <a
+            href="/"
+            class="text-[20px] font-sans font-bold tracking-[-0.04em] text-[var(--foreground-primary)] hover:opacity-70 transition-opacity"
+        >
+            Theodore's <span class="text-[var(--foreground-muted)] font-normal"
+                >Blogs</span
+            >
+        </a>
+        <a
+            href="/"
+            class="text-[12px] font-sans font-medium uppercase tracking-[0.1em] text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+        >
+            ← Back
+        </a>
+    </header>
+
+    <main class="w-full max-w-[960px] mx-auto px-6 pb-32">
+        <article class="pt-6 md:pt-12 fade-in">
+            <!-- Article Header -->
+            <div class="mb-12 md:mb-16">
+                <p
+                    class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]"
+                >
+                    {category}
+                    <span class="mx-3 opacity-30">/</span>
+                    {readTime}
+                </p>
+                <h1
+                    class="text-[44px] md:text-[64px] lg:text-[72px] font-sans font-medium tracking-tight leading-[0.95] text-[var(--foreground-primary)] max-w-[850px]"
+                >
+                    {title}
+                </h1>
+            </div>
+
+            <!-- Featured Image -->
+            <div
+                class="w-full h-auto mb-16 md:mb-24 overflow-hidden relative fade-in fade-in-delay-2 rounded-sm"
+            >
+                <img
+                    src={image}
+                    alt={title}
+                    class="w-full h-auto object-cover aspect-[16/9] md:aspect-[21/9] scale-[1.01]"
+                    loading="eager"
+                />
+            </div>
+
+            <!-- Content Layout -->
+            <div
+                class="flex flex-col md:flex-row gap-12 md:gap-24 fade-in fade-in-delay-4"
+            >
+                <!-- Sidebar Metadata -->
+                <aside class="w-full md:w-[160px] flex-shrink-0">
+                    <div class="md:sticky md:top-12 space-y-8">
+                        <div class="border-t border-[var(--border-color)] pt-3">
+                            <p
+                                class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1"
+                            >
+                                Published
+                            </p>
+                            <p
+                                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+                            >
+                                {publishedDate}
+                            </p>
+                        </div>
+                        <div class="border-t border-[var(--border-color)] pt-3">
+                            <p
+                                class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1"
+                            >
+                                Author
+                            </p>
+                            <p
+                                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+                            >
+                                {author}
+                            </p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Body -->
+                <div class="flex-1 max-w-[640px]">
+                    <p
+                        class="text-[18px] md:text-[20px] leading-[1.7] font-serif text-[var(--foreground-primary)] mb-10 italic opacity-90"
+                    >
+                        Quality is never an accident; it is always the result of
+                        high intention, sincere effort, intelligent direction,
+                        and skillful execution. In the world of modern software,
+                        waiting for a feature to be 'finished' before testing it
+                        is a recipe for technical debt and release-day
+                        disasters.
+                    </p>
+
+                    <h2
+                        class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+                    >
+                        Shifting Left: The QA Mindset
+                    </h2>
+                    <p
+                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+                    >
+                        The most expensive bugs are the ones built into the
+                        requirements. High-quality UX starts with a QA engineer
+                        sitting in the design and grooming sessions, poking
+                        holes in logic before a single developer opens their
+                        IDE. By identifying edge cases early, we don't just find
+                        bugs—ita we prevent them from ever existing.
+                    </p>
+
+                    <h2
+                        class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+                    >
+                        Automation as an Accelerator, Not a Goal
+                    </h2>
+                    <p
+                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+                    >
+                        Many teams fall into the trap of 'automating
+                        everything.' However, true quality engineering
+                        understands that automation is a tool to free up human
+                        creativity for exploratory testing. We build robust E2E
+                        suites with Playwright and Cypress not to replace us,
+                        but to give us the confidence to break things in more
+                        interesting ways.
+                    </p>
+
+                    <h2
+                        class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+                    >
+                        Building Resilient Systems
+                    </h2>
+                    <p
+                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+                    >
+                        Modern QA involves understanding the infrastructure. We
+                        look at API contracts, database integrity, and
+                        multi-region synchronization. When we ship global
+                        logistics engines like MuatParts, we aren't just
+                        checking if a button works; we are verifying that a
+                        cross-border transaction won't fail if the GPS signal
+                        flickers for a second in the mountains.
+                    </p>
+
+                    <h2
+                        class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+                    >
+                        Bake in Flexibility
+                    </h2>
+                    <p
+                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+                    >
+                        Regulatory frameworks, emissions factors, and supplier
+                        data are constantly evolving. Your data stack should
+                        too. That means designing for modularity, version
+                        control, and extensibility. Future-proofing your system
+                        is less about predicting what's next and more about
+                        building with change in mind.
+                    </p>
+
+                    <h2
+                        class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+                    >
+                        From Stack to Story
+                    </h2>
+                    <p
+                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+                    >
+                        At the end of the day, data infrastructure is only
+                        valuable if it drives action. A climate-ready stack
+                        enables teams to monitor progress, identify trade-offs,
+                        and make informed decisions at speed. With the right
+                        foundations in place, sustainability becomes more than a
+                        report—it becomes a capability.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </main>
+</BlogLayout>
+
+<script>
+    // Simple reading progress bar
+    const progressBar = document.getElementById(
+        "scroll-progress"
+    ) as HTMLElement;
+    window.addEventListener(
+        "scroll",
+        () => {
+            const h =
+                document.documentElement.scrollHeight - window.innerHeight;
+            if (progressBar)
+                progressBar.style.width = `${
+                    h > 0 ? (window.scrollY / h) * 100 : 0
+                }%`;
+        },
+        { passive: true }
+    );
+</script>
