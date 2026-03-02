@@ -434,11 +434,11 @@ const skillGroups = [
 
                   {/* Bottom: Typography & Tags */}
                   <div class="mt-auto relative z-10 w-full md:w-[90%]">
-                    <h3 class="text-[22px] md:text-[26px] font-extrabold leading-[1.1] tracking-[-0.02em] mb-3 text-[var(--foreground-secondary)] group-hover:text-[var(--foreground-primary)] transition-colors duration-300">
+                    <h3 class="text-[24px] md:text-[28px] font-serif font-medium leading-[1.05] tracking-[-0.03em] mb-2 text-[var(--foreground-primary)] transition-colors duration-300">
                       {project.frontmatter.title}
                     </h3>
 
-                    <div class="text-[13px] md:text-[14px] text-[var(--foreground-muted)] group-hover:text-[var(--foreground-secondary)] transition-colors duration-300 line-clamp-3 leading-[1.6] mb-5">
+                    <div class="text-[14px] md:text-[15px] font-sans font-light text-[var(--foreground-secondary)] transition-colors duration-300 line-clamp-3 leading-[1.6] mb-5">
                       <Fragment
                         set:html={project.frontmatter.description.replace(
                           /\*\*(.+?)\*\*/g,
