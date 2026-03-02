@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Radio Canada Big"', 'sans-serif'],
+        serif: ['"Source Serif 4"', '"Source Serif Pro"', 'serif'],
+        mono: ['"Space Mono"', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
