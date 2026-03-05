@@ -1,0 +1,125 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { site } from "@/data/site.config";
+
+const icons = {
+    arrow: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`,
+    sun: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+    moon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
+};
+
+const articles = [
+    {
+        title: "The Art of Intentional Breaking: Why QA Starts Before the First Line of Code",
+        description: "True quality engineering isn't just about finding bugs; it is about architecting systems that are resilient by design.",
+        category: "Quality Engineering",
+        readTime: "5 min",
+        date: "March 2, 2026",
+        slug: "/blog/the-art-of-intentional-breaking",
+        image: "/images/gallery/manwithcode.png",
+    },
+];
+---
+
+<BlogLayout title="Articles" description="Thoughts on quality engineering, test automation, and building resilient software.">
+    <!-- Navigation -->
+    <header
+        class="w-full max-w-[960px] mx-auto px-6 py-10 flex justify-between items-center bg-transparent relative z-10"
+    >
+        <a
+            href="/"
+            class="text-[20px] font-sans font-bold tracking-[-0.04em] text-[var(--foreground-primary)] hover:opacity-70 transition-opacity"
+        >
+            Theodore's <span class="text-[var(--foreground-muted)] font-normal">Blogs</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <button
+                id="blog-theme-toggle"
+                class="w-8 h-8 rounded-full border border-[var(--border-color)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] hover:border-[var(--foreground-primary)] transition-all"
+                aria-label="Toggle theme"
+            >
+                <span class="dark:hidden" set:html={icons.sun}></span>
+                <span class="hidden dark:block" set:html={icons.moon}></span>
+            </button>
+            <a
+                href="/"
+                class="text-[12px] font-sans font-medium uppercase tracking-[0.1em] text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+            >
+                ← Portfolio
+            </a>
+        </div>
+    </header>
+
+    <main class="w-full max-w-[960px] mx-auto px-6 pb-32">
+        <!-- Page Header -->
+        <div class="pt-6 md:pt-12 mb-16 md:mb-24">
+            <p class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]">
+                thoughts & insights
+            </p>
+            <h1
+                class="text-[44px] md:text-[64px] lg:text-[72px] font-sans font-medium tracking-tight leading-[0.95] text-[var(--foreground-primary)] max-w-[700px]"
+            >
+                Writing about quality, code, and craft.
+            </h1>
+        </div>
+
+        <!-- Articles List -->
+        <div class="space-y-8">
+            {articles.map((article) => (
+                <a
+                    href={article.slug}
+                    class="group flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm border border-[var(--border-color)] bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.03)] transition-all duration-500 hover:border-[var(--foreground-primary)]"
+                >
+                    <div class="w-full md:w-[35%] overflow-hidden">
+                        <img
+                            src={article.image}
+                            alt={article.title}
+                            class="h-full w-full object-cover min-h-[200px] grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-center p-8 md:p-10">
+                        <div class="mb-4 flex items-center gap-3">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] px-2 py-1 border border-[var(--border-color)]">
+                                {article.category}
+                            </span>
+                            <span class="text-[11px] font-serif text-[var(--foreground-muted)] italic">
+                                {article.readTime}
+                            </span>
+                        </div>
+                        <h2 class="text-[24px] md:text-[28px] font-serif font-medium leading-[1.1] tracking-[-0.02em] text-[var(--foreground-primary)] mb-3 group-hover:underline underline-offset-4">
+                            {article.title}
+                        </h2>
+                        <p class="text-[14px] md:text-[15px] font-sans font-light leading-[1.6] text-[var(--foreground-secondary)] line-clamp-2">
+                            {article.description}
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-[12px] font-mono text-[var(--foreground-muted)]">{article.date}</span>
+                            <span class="flex items-center gap-2 text-[12px] font-mono font-medium uppercase tracking-tight text-[var(--foreground-primary)] group-hover:gap-4 transition-all">
+                                Read <Fragment set:html={icons.arrow} />
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-[960px] mx-auto px-6 py-8 text-center border-t border-[var(--border-color)]">
+        <p class="text-[10px] text-[var(--foreground-muted)] tracking-[0.08em] uppercase">
+            © {new Date().getFullYear()} {site.author} · Built with Astro
+        </p>
+    </footer>
+</BlogLayout>
+
+<script>
+    const blogThemeToggle = document.getElementById("blog-theme-toggle");
+    blogThemeToggle?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem(
+            "theme",
+            document.documentElement.classList.contains("dark") ? "dark" : "light"
+        );
+    });
+</script>
