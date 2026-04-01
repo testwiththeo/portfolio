@@ -1,0 +1,305 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import NavbarControls from "@/components/NavbarControls.astro";
+import { site } from "@/data/site.config";
+
+const title =
+  "The Cost of Over-Engineering Products: Building Unicorn Features for Nobody";
+const description =
+  "When teams skip MVP and ignore user feedback, product development becomes expensive guesswork. A practical reflection from startup reality.";
+const author = "Theodore";
+const publishedDate = "March 21, 2026";
+const readTime = "7 min";
+const category = "Product Quality";
+const image = "/images/gallery/canyon.png";
+
+const icons = {
+  arrow: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`,
+};
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  type="article"
+  image={image}
+  imageAlt={title}
+  publishedTime={publishedDate}
+  modifiedTime={publishedDate}
+  section={category}
+  tags={[category, "Quality Engineering", "QA", "Software Testing"]}
+>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header
+    class="w-full max-w-[960px] mx-auto px-6 py-10 flex justify-between items-center bg-transparent relative z-10"
+  >
+    <a
+      href="/"
+      class="text-[20px] font-sans font-bold tracking-[-0.04em] text-[var(--foreground-primary)] hover:opacity-70 transition-opacity"
+    >
+      Theodore's <span class="text-[var(--foreground-muted)] font-normal">Blogs</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <NavbarControls />
+      <a
+        href="/blog"
+        class="text-[12px] font-sans font-medium uppercase tracking-[0.1em] text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+      >
+        ← All Articles
+      </a>
+    </div>
+  </header>
+
+  <main class="w-full max-w-[960px] mx-auto px-6 pb-16">
+    <article class="pt-6 md:pt-12 fade-in">
+      <div class="mb-12 md:mb-16">
+        <p
+          class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]"
+        >
+          <span data-blog-i18n-key="meta_category">{category}</span>
+          <span class="mx-3 opacity-30">/</span>
+          <span data-blog-i18n-key="meta_readtime">{readTime}</span>
+        </p>
+        <h1
+          data-blog-i18n-key="title"
+          class="text-[44px] md:text-[64px] lg:text-[72px] font-sans font-medium tracking-tight leading-[0.95] text-[var(--foreground-primary)] max-w-[850px]"
+        >
+          {title}
+        </h1>
+      </div>
+
+      <div
+        class="w-full h-auto mb-16 md:mb-24 overflow-hidden relative fade-in fade-in-delay-2 rounded-sm"
+      >
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-auto object-cover aspect-[16/9] md:aspect-[21/9] scale-[1.01]"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-12 md:gap-24 fade-in fade-in-delay-4">
+        <aside class="w-full md:w-[160px] flex-shrink-0">
+          <div class="md:sticky md:top-12 space-y-8">
+            <div class="border-t border-[var(--border-color)] pt-3">
+              <p class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1">
+                Published
+              </p>
+              <p
+                data-blog-i18n-key="published_date"
+                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+              >
+                {publishedDate}
+              </p>
+            </div>
+            <div class="border-t border-[var(--border-color)] pt-3">
+              <p class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1">
+                Author
+              </p>
+              <p
+                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+              >
+                {author}
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="flex-1 max-w-[640px]">
+          <p
+            data-blog-i18n-key="intro"
+            class="text-[18px] md:text-[20px] leading-[1.7] font-serif text-[var(--foreground-primary)] mb-10 italic opacity-90"
+          >
+            I have seen teams build products like they were preparing a unicorn
+            app from day one, even when user demand was still unclear. We built
+            many features, but very few users truly needed them.
+          </p>
+
+          <h2 data-blog-i18n-key="section_1_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            No MVP, No Reality Check
+          </h2>
+          <p data-blog-i18n-key="section_1_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            The core problem was simple: no MVP mindset. Instead of validating a
+            small core solution, we jumped straight into full-scale feature
+            development. Without that first reality check, teams can mistake
+            internal assumptions for real user needs.
+          </p>
+
+          <h2 data-blog-i18n-key="section_2_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            UAT Without Real Users Is Theater
+          </h2>
+          <p data-blog-i18n-key="section_2_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            UAT became messy because feedback did not come from the right
+            audience. Some feedback came from random internal voices, while
+            actual user feedback was minimal. If real users are almost not
+            there, feature decisions can drift far from market reality.
+          </p>
+
+          <h2 data-blog-i18n-key="section_3_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Over-Engineering Hides Product Risk
+          </h2>
+          <p data-blog-i18n-key="section_3_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            Over-engineering looks impressive in demos, but it can hide the
+            biggest risk: nobody needs the feature. It is like constructing a
+            ten-story building on land that has not passed a soil test. The
+            structure gets bigger, while confidence gets weaker.
+          </p>
+
+          <h2 data-blog-i18n-key="section_4_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            What Healthy Product Development Looks Like
+          </h2>
+          <p data-blog-i18n-key="section_4_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            Good product teams accept that early versions are imperfect. MVP is
+            not a sign of weakness. It is a learning instrument. When users give
+            good and bad feedback early, teams can iterate faster, remove
+            low-value features, and invest only in what solves real pain.
+          </p>
+
+          <h2 data-blog-i18n-key="section_5_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            The QA Perspective
+          </h2>
+          <p data-blog-i18n-key="section_5_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            QA feels the cost of over-engineering first. Test scope explodes,
+            regression takes longer, and critical scenarios can be diluted by
+            many low-impact checks. Quality is not only about passing tests. It
+            is about proving the product solves the right problem.
+          </p>
+
+          <h2 data-blog-i18n-key="section_6_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Final Thought
+          </h2>
+          <p data-blog-i18n-key="section_6_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            Great products are not built by adding everything. They are built by
+            learning quickly, listening carefully, and improving intentionally.
+            If we skip MVP and real feedback loops, we are not building a
+            product. We are building an expensive assumption.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <div class="mt-20 border-t border-[var(--border-color)] pt-12 max-w-[640px] ml-auto md:ml-[184px]">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <p class="text-[12px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] mb-2">Written by</p>
+          <p class="text-[18px] font-sans font-medium text-[var(--foreground-primary)]">{author}</p>
+          <p data-blog-i18n-key="author_role" class="text-[14px] font-serif text-[var(--foreground-secondary)] mt-1">Software Quality Assurance Engineer</p>
+        </div>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-5 py-2.5 text-[12px] font-mono font-medium uppercase tracking-widest border border-[var(--border-color)] rounded-full text-[var(--foreground-primary)] hover:bg-[var(--foreground-primary)] hover:text-[var(--background-warm)] transition-all"
+        >
+          View Portfolio <span set:html={icons.arrow}></span>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 mt-8 pt-8 border-t border-[var(--border-color)]">
+        <a href="/blog/" class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors">
+          ← All Articles
+        </a>
+        <span class="text-[var(--border-color)]">·</span>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors">
+          LinkedIn
+        </a>
+        <span class="text-[var(--border-color)]">·</span>
+        <a href={site.github} target="_blank" rel="noopener noreferrer" class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full max-w-[960px] mx-auto px-6 py-8 text-center border-t border-[var(--border-color)] mt-8">
+    <p class="text-[10px] text-[var(--foreground-muted)] tracking-[0.08em] uppercase">
+      © {new Date().getFullYear()} {site.author} · Built with Astro
+    </p>
+  </footer>
+</BlogLayout>
+
+<script>
+  window.__blogI18n = {
+    meta_category: { en: "Product Quality", id: "Kualitas Produk" },
+    meta_readtime: { en: "7 min", id: "7 menit" },
+    title: {
+      en: "The Cost of Over-Engineering Products: Building Unicorn Features for Nobody",
+      id: "Biaya Over-Engineering Produk: Bangun Fitur Canggih yang Ujung-Ujungnya Nggak Kepakai",
+    },
+    published_date: { en: "March 21, 2026", id: "21 Maret 2026" },
+    intro: {
+      en: "I have seen teams build products like they were preparing a unicorn app from day one, even when user demand was still unclear. We built many features, but very few users truly needed them.",
+      id: "Saya sering lihat tim ngebangun produk seolah dari hari pertama sudah mau jadi unicorn app, padahal demand user-nya belum jelas. Fitur dibuat banyak, tapi yang benar-benar dibutuhin user ternyata sedikit.",
+    },
+    section_1_title: {
+      en: "No MVP, No Reality Check",
+      id: "Tanpa MVP, Nggak Ada Reality Check",
+    },
+    section_1_body: {
+      en: "The core problem was simple: no MVP mindset. Instead of validating a small core solution, we jumped straight into full-scale feature development. Without that first reality check, teams can mistake internal assumptions for real user needs.",
+      id: "Masalah intinya simpel: nggak ada pola pikir MVP. Alih-alih validasi solusi inti yang kecil dulu, tim langsung lompat ke pengembangan fitur skala penuh. Tanpa reality check di awal, asumsi internal gampang disangka kebutuhan user yang nyata.",
+    },
+    section_2_title: {
+      en: "UAT Without Real Users Is Theater",
+      id: "UAT Tanpa User Asli Itu Cuma Formalitas",
+    },
+    section_2_body: {
+      en: "UAT became messy because feedback did not come from the right audience. Some feedback came from random internal voices, while actual user feedback was minimal. If real users are almost not there, feature decisions can drift far from market reality.",
+      id: "UAT jadi berantakan karena feedback-nya bukan dari audiens yang tepat. Ada masukan dari banyak suara internal, tapi feedback dari user asli minim banget. Kalau user nyata hampir nggak terlibat, keputusan fitur gampang melenceng jauh dari kondisi market.",
+    },
+    section_3_title: {
+      en: "Over-Engineering Hides Product Risk",
+      id: "Over-Engineering Menutupi Risiko Produk",
+    },
+    section_3_body: {
+      en: "Over-engineering looks impressive in demos, but it can hide the biggest risk: nobody needs the feature. It is like constructing a ten-story building on land that has not passed a soil test. The structure gets bigger, while confidence gets weaker.",
+      id: "Over-engineering memang kelihatan keren di demo, tapi bisa nutupin risiko terbesar: ternyata fiturnya nggak ada yang butuh. Ibarat bangun gedung 10 lantai di tanah yang belum lolos uji. Bangunannya makin tinggi, tapi keyakinannya justru makin rapuh.",
+    },
+    section_4_title: {
+      en: "What Healthy Product Development Looks Like",
+      id: "Seperti Apa Pengembangan Produk yang Sehat",
+    },
+    section_4_body: {
+      en: "Good product teams accept that early versions are imperfect. MVP is not a sign of weakness. It is a learning instrument. When users give good and bad feedback early, teams can iterate faster, remove low-value features, and invest only in what solves real pain.",
+      id: "Tim produk yang sehat paham kalau versi awal memang belum sempurna. MVP bukan tanda lemah, tapi alat belajar. Saat feedback bagus dan jelek datang lebih cepat, tim bisa iterasi lebih gesit, buang fitur bernilai rendah, dan fokus investasi ke masalah user yang benar-benar nyata.",
+    },
+    section_5_title: {
+      en: "The QA Perspective",
+      id: "Dari Sudut Pandang QA",
+    },
+    section_5_body: {
+      en: "QA feels the cost of over-engineering first. Test scope explodes, regression takes longer, and critical scenarios can be diluted by many low-impact checks. Quality is not only about passing tests. It is about proving the product solves the right problem.",
+      id: "QA biasanya jadi pihak pertama yang ngerasain mahalnya over-engineering. Scope test melebar, regression makin lama, dan skenario kritis ketutup banyak pengecekan yang impact-nya rendah. Kualitas bukan cuma soal test pass, tapi bukti kalau produk ini benar-benar nyelesain masalah yang tepat.",
+    },
+    section_6_title: {
+      en: "Final Thought",
+      id: "Penutup",
+    },
+    section_6_body: {
+      en: "Great products are not built by adding everything. They are built by learning quickly, listening carefully, and improving intentionally. If we skip MVP and real feedback loops, we are not building a product. We are building an expensive assumption.",
+      id: "Produk bagus itu bukan hasil nambah semua hal sekaligus. Ia dibangun lewat belajar cepat, dengerin user dengan serius, dan perbaikan yang sengaja diarahkan. Kalau MVP dan feedback loop nyata dilewati, kita bukan lagi bikin produk, tapi sedang membiayai asumsi yang mahal.",
+    },
+    author_role: {
+      en: "Software Quality Assurance Engineer",
+      id: "Software Quality Assurance Engineer",
+    },
+  };
+
+  const currentLang = localStorage.getItem("lang") === "id" ? "id" : "en";
+  if (typeof window.__applyBlogLang === "function")
+    window.__applyBlogLang(currentLang);
+
+  const progressBar = document.getElementById("scroll-progress") as HTMLElement;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressBar)
+        progressBar.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
+    },
+    { passive: true }
+  );
+
+</script>

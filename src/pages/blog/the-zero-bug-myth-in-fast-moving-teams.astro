@@ -1,0 +1,350 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import NavbarControls from "@/components/NavbarControls.astro";
+import { site } from "@/data/site.config";
+
+const title =
+  "The Zero-Bug Myth in Fast-Moving Teams: Why Quality Is About Risk, Not Perfection";
+const description =
+  "A reflection from startup QA reality: tight timelines, huge bug backlogs, and the pressure to ship. Quality improves when teams manage risk, not chase impossible perfection.";
+const author = "Theodore";
+const publishedDate = "March 27, 2026";
+const readTime = "7 min";
+const category = "QA Culture";
+const image = "/images/gallery/hackathon.png";
+
+const icons = {
+  arrow: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`,
+};
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  type="article"
+  image={image}
+  imageAlt={title}
+  publishedTime={publishedDate}
+  modifiedTime={publishedDate}
+  section={category}
+  tags={["QA Culture", "Risk Management", "Release Quality", "Startup Engineering"]}
+>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header
+    class="w-full max-w-[960px] mx-auto px-6 py-10 flex justify-between items-center bg-transparent relative z-10"
+  >
+    <a
+      href="/"
+      class="text-[20px] font-sans font-bold tracking-[-0.04em] text-[var(--foreground-primary)] hover:opacity-70 transition-opacity"
+    >
+      Theodore's <span class="text-[var(--foreground-muted)] font-normal">Blogs</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <NavbarControls />
+      <a
+        href="/blog"
+        class="text-[12px] font-sans font-medium uppercase tracking-[0.1em] text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+      >
+        ← All Articles
+      </a>
+    </div>
+  </header>
+
+  <main class="w-full max-w-[960px] mx-auto px-6 pb-16">
+    <article class="pt-6 md:pt-12 fade-in">
+      <div class="mb-12 md:mb-16">
+        <p
+          class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]"
+        >
+          <span data-blog-i18n-key="meta_category">{category}</span>
+          <span class="mx-3 opacity-30">/</span>
+          <span data-blog-i18n-key="meta_readtime">{readTime}</span>
+        </p>
+        <h1
+          data-blog-i18n-key="title"
+          class="text-[44px] md:text-[64px] lg:text-[72px] font-sans font-medium tracking-tight leading-[0.95] text-[var(--foreground-primary)] max-w-[850px]"
+        >
+          {title}
+        </h1>
+      </div>
+
+      <div
+        class="w-full h-auto mb-16 md:mb-24 overflow-hidden relative fade-in fade-in-delay-2 rounded-sm"
+      >
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-auto object-cover aspect-[16/9] md:aspect-[21/9] scale-[1.01]"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-12 md:gap-24 fade-in fade-in-delay-4">
+        <aside class="w-full md:w-[160px] flex-shrink-0">
+          <div class="md:sticky md:top-12 space-y-8">
+            <div class="border-t border-[var(--border-color)] pt-3">
+              <p class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1">
+                Published
+              </p>
+              <p
+                data-blog-i18n-key="published_date"
+                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+              >
+                {publishedDate}
+              </p>
+            </div>
+            <div class="border-t border-[var(--border-color)] pt-3">
+              <p class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1">
+                Author
+              </p>
+              <p
+                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+              >
+                {author}
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="flex-1 max-w-[640px]">
+          <p
+            data-blog-i18n-key="intro"
+            class="text-[18px] md:text-[20px] leading-[1.7] font-serif text-[var(--foreground-primary)] mb-10 italic opacity-90"
+          >
+            I worked in an environment where QA culture pushed one message hard:
+            zero bug. At the same time, timelines were always tight, bug counts
+            were massive, and shipping pressure never stopped. We chased
+            perfection, but the process kept creating new defects faster than we
+            could close them.
+          </p>
+
+          <h2 data-blog-i18n-key="section_1_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Zero Bug Sounds Great, but It Is Not a Real Product Strategy
+          </h2>
+          <p data-blog-i18n-key="section_1_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            In real software systems, the target is not absolute perfection. The
+            target is controlled risk. If teams define quality as "no bug at all,"
+            they often create unhealthy patterns: endless overtime, fear-based
+            decision making, and delayed releases that still contain defects.
+            Quality should be measured by user impact, severity, and recovery
+            speed.
+          </p>
+
+          <h2 data-blog-i18n-key="section_2_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Why Teams Still Ship with Known Bugs
+          </h2>
+          <p data-blog-i18n-key="section_2_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            Shipping with known bugs is sometimes the responsible choice when the
+            bugs are low risk, mitigation is clear, and release value is high.
+            What matters is transparent decision making: which issues are accepted,
+            why they are accepted, and what guardrails are prepared in production.
+            Without this discipline, teams either freeze unnecessarily or ship
+            blindly.
+          </p>
+
+          <h2 data-blog-i18n-key="section_3_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Even Top Companies Face Production Bugs
+          </h2>
+          <p data-blog-i18n-key="section_3_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-5">
+            Big tech companies with world-class engineering still experience major
+            incidents caused by internal mistakes. A few examples:
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <span data-blog-i18n-key="incident_meta">Meta (October 2021): a backbone network change took services down
+              globally. Meta published the technical explanation and acknowledged
+              tooling failure in audit protection.</span>
+              <a
+                data-blog-i18n-key="incident_meta_link"
+                href="https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Read Meta post
+              </a>
+            </li>
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <span data-blog-i18n-key="incident_aws">Amazon AWS S3 (February 2017): a command input error removed more
+              servers than intended and caused broad S3 disruption in us-east-1.</span>
+              <a
+                data-blog-i18n-key="incident_aws_link"
+                href="https://aws.amazon.com/message/41926/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Read AWS summary
+              </a>
+            </li>
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <span data-blog-i18n-key="incident_google">Google (December 2020): a quota management issue in identity systems
+              caused widespread authentication failures across Google Cloud and
+              Workspace services.</span>
+              <a
+                data-blog-i18n-key="incident_google_link"
+                href="https://status.cloud.google.com/incidents/cFXPsFUnUELR8U2bQeGz"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Read Google incident report
+              </a>
+            </li>
+          </ul>
+
+          <h2 data-blog-i18n-key="section_4_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Better QA Culture: From Zero Bug to Zero Surprise
+          </h2>
+          <p data-blog-i18n-key="section_4_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            The healthier goal is not zero bug. The healthier goal is zero surprise
+            at release time. Teams should know their open risks, critical path
+            status, rollback plan, and monitoring readiness before production. If
+            those are clear, releases become predictable even when some non-critical
+            bugs remain.
+          </p>
+
+          <h2 data-blog-i18n-key="section_5_title" class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4">
+            Final Reflection
+          </h2>
+          <p data-blog-i18n-key="section_5_body" class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+            I still care deeply about quality, but I no longer equate quality with
+            the fantasy of perfect software. Mature quality culture means honest
+            tradeoffs, strong risk management, and sustainable team pace. Bugs may
+            still exist, but chaos does not have to.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <div class="mt-20 border-t border-[var(--border-color)] pt-12 max-w-[640px] ml-auto md:ml-[184px]">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <p class="text-[12px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] mb-2">Written by</p>
+          <p class="text-[18px] font-sans font-medium text-[var(--foreground-primary)]">{author}</p>
+          <p data-blog-i18n-key="author_role" class="text-[14px] font-serif text-[var(--foreground-secondary)] mt-1">Software Quality Assurance Engineer</p>
+        </div>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-5 py-2.5 text-[12px] font-mono font-medium uppercase tracking-widest border border-[var(--border-color)] rounded-full text-[var(--foreground-primary)] hover:bg-[var(--foreground-primary)] hover:text-[var(--background-warm)] transition-all"
+        >
+          View Portfolio <span set:html={icons.arrow}></span>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 mt-8 pt-8 border-t border-[var(--border-color)]">
+        <a href="/blog/" class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors">
+          ← All Articles
+        </a>
+        <span class="text-[var(--border-color)]">·</span>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors">
+          LinkedIn
+        </a>
+        <span class="text-[var(--border-color)]">·</span>
+        <a href={site.github} target="_blank" rel="noopener noreferrer" class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full max-w-[960px] mx-auto px-6 py-8 text-center border-t border-[var(--border-color)] mt-8">
+    <p class="text-[10px] text-[var(--foreground-muted)] tracking-[0.08em] uppercase">
+      © {new Date().getFullYear()} {site.author} · Built with Astro
+    </p>
+  </footer>
+</BlogLayout>
+
+<script>
+  window.__blogI18n = {
+    meta_category: { en: "QA Culture", id: "Budaya QA" },
+    meta_readtime: { en: "7 min", id: "7 menit" },
+    title: {
+      en: "The Zero-Bug Myth in Fast-Moving Teams: Why Quality Is About Risk, Not Perfection",
+      id: "Mitos Zero Bug di Tim Serba Cepat: Quality Itu Soal Risiko, Bukan Soal Sempurna",
+    },
+    published_date: { en: "March 27, 2026", id: "27 Maret 2026" },
+    intro: {
+      en: "I worked in an environment where QA culture pushed one message hard: zero bug. At the same time, timelines were always tight, bug counts were massive, and shipping pressure never stopped. We chased perfection, but the process kept creating new defects faster than we could close them.",
+      id: "Saya pernah kerja di lingkungan yang budaya QA-nya menekan satu pesan terus-menerus: zero bug. Di saat yang sama, timeline selalu mepet, jumlah bug numpuk, dan pressure buat rilis nggak pernah berhenti. Kita ngejar kesempurnaan, tapi prosesnya justru terus melahirkan defect baru lebih cepat daripada yang bisa ditutup.",
+    },
+    section_1_title: {
+      en: "Zero Bug Sounds Great, but It Is Not a Real Product Strategy",
+      id: "Zero Bug Kedengarannya Keren, Tapi Bukan Strategi Produk yang Realistis",
+    },
+    section_1_body: {
+      en: 'In real software systems, the target is not absolute perfection. The target is controlled risk. If teams define quality as "no bug at all," they often create unhealthy patterns: endless overtime, fear-based decision making, and delayed releases that still contain defects. Quality should be measured by user impact, severity, and recovery speed.',
+      id: 'Di sistem software nyata, targetnya bukan kesempurnaan absolut, tapi risiko yang terkendali. Kalau kualitas didefinisikan sebagai "harus nol bug", biasanya muncul pola kerja yang nggak sehat: lembur tanpa akhir, keputusan karena takut, dan rilis yang molor tapi tetap bawa defect. Kualitas lebih masuk akal diukur dari dampak ke user, tingkat severity, dan kecepatan recovery.',
+    },
+    section_2_title: {
+      en: "Why Teams Still Ship with Known Bugs",
+      id: "Kenapa Tim Tetap Rilis Meski Ada Bug yang Sudah Diketahui",
+    },
+    section_2_body: {
+      en: "Shipping with known bugs is sometimes the responsible choice when the bugs are low risk, mitigation is clear, and release value is high. What matters is transparent decision making: which issues are accepted, why they are accepted, and what guardrails are prepared in production. Without this discipline, teams either freeze unnecessarily or ship blindly.",
+      id: "Kadang rilis dengan known bug justru keputusan yang paling bertanggung jawab, selama risikonya rendah, mitigasinya jelas, dan value rilisnya tinggi. Yang penting adalah keputusan yang transparan: issue mana yang diterima, kenapa diterima, dan guardrail apa yang disiapkan di production. Tanpa disiplin ini, tim biasanya jatuh ke dua ekstrem: freeze tanpa perlu atau rilis secara buta.",
+    },
+    section_3_title: {
+      en: "Even Top Companies Face Production Bugs",
+      id: "Perusahaan Kelas Dunia Pun Tetap Bisa Kena Bug di Production",
+    },
+    section_3_body: {
+      en: "Big tech companies with world-class engineering still experience major incidents caused by internal mistakes. A few examples:",
+      id: "Bahkan perusahaan teknologi dengan engineering kelas dunia pun masih bisa kena insiden besar karena kesalahan internal. Contohnya:",
+    },
+    incident_meta: {
+      en: "Meta (October 2021): a backbone network change took services down globally. Meta published the technical explanation and acknowledged tooling failure in audit protection.",
+      id: "Meta (Oktober 2021): perubahan di backbone network bikin layanan down secara global. Meta merilis penjelasan teknis dan mengakui ada kegagalan tooling pada perlindungan audit.",
+    },
+    incident_meta_link: { en: "Read Meta post", id: "Baca post Meta" },
+    incident_aws: {
+      en: "Amazon AWS S3 (February 2017): a command input error removed more servers than intended and caused broad S3 disruption in us-east-1.",
+      id: "Amazon AWS S3 (Februari 2017): kesalahan input command menghapus server lebih banyak dari rencana dan memicu gangguan S3 yang luas di us-east-1.",
+    },
+    incident_aws_link: { en: "Read AWS summary", id: "Baca ringkasan AWS" },
+    incident_google: {
+      en: "Google (December 2020): a quota management issue in identity systems caused widespread authentication failures across Google Cloud and Workspace services.",
+      id: "Google (Desember 2020): masalah manajemen kuota pada sistem identitas menyebabkan kegagalan autentikasi secara luas di layanan Google Cloud dan Workspace.",
+    },
+    incident_google_link: { en: "Read Google incident report", id: "Baca laporan insiden Google" },
+    section_4_title: {
+      en: "Better QA Culture: From Zero Bug to Zero Surprise",
+      id: "Budaya QA yang Lebih Sehat: Dari Zero Bug ke Zero Surprise",
+    },
+    section_4_body: {
+      en: "The healthier goal is not zero bug. The healthier goal is zero surprise at release time. Teams should know their open risks, critical path status, rollback plan, and monitoring readiness before production. If those are clear, releases become predictable even when some non-critical bugs remain.",
+      id: "Target yang lebih sehat bukan zero bug, tapi zero surprise saat rilis. Tim harus tahu risiko terbuka apa saja, status critical path, rencana rollback, dan kesiapan monitoring sebelum production. Kalau empat hal itu jelas, rilis jadi lebih terprediksi meskipun masih ada bug non-kritis yang tersisa.",
+    },
+    section_5_title: {
+      en: "Final Reflection",
+      id: "Refleksi Penutup",
+    },
+    section_5_body: {
+      en: "I still care deeply about quality, but I no longer equate quality with the fantasy of perfect software. Mature quality culture means honest tradeoffs, strong risk management, and sustainable team pace. Bugs may still exist, but chaos does not have to.",
+      id: "Saya tetap peduli banget sama kualitas, tapi sekarang saya nggak lagi menyamakan kualitas dengan fantasi software yang sempurna. Budaya quality yang matang itu soal trade-off yang jujur, manajemen risiko yang kuat, dan ritme kerja tim yang berkelanjutan. Bug mungkin tetap ada, tapi chaos seharusnya nggak wajib ada.",
+    },
+    author_role: {
+      en: "Software Quality Assurance Engineer",
+      id: "Software Quality Assurance Engineer",
+    },
+  };
+
+  const currentLang = localStorage.getItem("lang") === "id" ? "id" : "en";
+  if (typeof window.__applyBlogLang === "function")
+    window.__applyBlogLang(currentLang);
+
+  const progressBar = document.getElementById("scroll-progress") as HTMLElement;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressBar)
+        progressBar.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
+    },
+    { passive: true }
+  );
+
+</script>
