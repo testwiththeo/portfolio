@@ -6,7 +6,12 @@ interface Props {
   description?: string;
   type?: 'website' | 'article';
   image?: string;
+  imageAlt?: string;
   canonicalURL?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
 }
 
 const { 
@@ -14,10 +19,24 @@ const {
   description = site.description,
   type = 'website',
   image = '/og-image.png',
+  imageAlt = title || site.title,
   canonicalURL = Astro.url.href,
+  publishedTime,
+  modifiedTime,
+  section,
+  tags = [],
 } = Astro.props;
 
 const fullTitle = title === site.title ? title : `${title} | ${site.author}`;
+const ogImageURL = new URL(image, site.url).toString();
+const toISO = (value?: string) => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+};
+const publishedISO = toISO(publishedTime);
+const modifiedISO = toISO(modifiedTime);
+const isArticle = type === "article";
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -38,6 +57,27 @@ const webpageSchema = {
   url: canonicalURL,
   author: { '@type': 'Person', name: site.author },
 };
+
+const articleSchema = isArticle
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: fullTitle,
+      description,
+      image: [ogImageURL],
+      datePublished: publishedISO,
+      dateModified: modifiedISO || publishedISO,
+      author: { '@type': 'Person', name: site.author, url: site.url },
+      publisher: {
+        '@type': 'Person',
+        name: site.author,
+        url: site.url,
+      },
+      mainEntityOfPage: canonicalURL,
+      articleSection: section,
+      keywords: tags.length ? tags.join(", ") : undefined,
+    }
+  : null;
 ---
 
 <title>{fullTitle}</title>
@@ -51,18 +91,28 @@ const webpageSchema = {
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, site.url).toString()} />
-<meta property="og:site_name" content={site.author} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={`${site.author} Blog`} />
 <meta property="og:locale" content="en_US" />
+{isArticle && publishedISO && <meta property="article:published_time" content={publishedISO} />}
+{isArticle && modifiedISO && <meta property="article:modified_time" content={modifiedISO} />}
+{isArticle && <meta property="article:author" content={site.author} />}
+{isArticle && section && <meta property="article:section" content={section} />}
+{isArticle && tags.map((tag: string) => <meta property="article:tag" content={tag} />)}
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={fullTitle} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, site.url).toString()} />
+<meta property="twitter:image" content={ogImageURL} />
+<meta property="twitter:image:alt" content={imageAlt} />
 
 <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(webpageSchema)} />
+{articleSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+)}
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
