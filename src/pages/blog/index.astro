@@ -2,58 +2,11 @@
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import NavbarControls from "@/components/NavbarControls.astro";
 import { site } from "@/data/site.config";
+import { articles } from "@/data/articles";
 
 const icons = {
     arrow: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`,
 };
-
-const articles = [
-    {
-        title: "The Zero-Bug Myth in Fast-Moving Teams: Why Quality Is About Risk, Not Perfection",
-        description: "A reflection from startup QA reality: tight timelines, huge bug backlogs, and the pressure to ship. Quality improves when teams manage risk, not chase impossible perfection.",
-        category: "QA Culture",
-        readTime: "7 min",
-        date: "March 27, 2026",
-        slug: "/blog/the-zero-bug-myth-in-fast-moving-teams",
-        image: "/images/gallery/hackathon.png",
-    },
-    {
-        title: "The Cost of Over-Engineering Products: Building Unicorn Features for Nobody",
-        description: "When teams skip MVP and ignore user feedback, product development becomes expensive guesswork. A practical reflection from startup reality.",
-        category: "Product Quality",
-        readTime: "7 min",
-        date: "March 21, 2026",
-        slug: "/blog/the-cost-of-over-engineering-products",
-        image: "/images/gallery/canyon.png",
-    },
-    {
-        title: "Agile Methodologies for Quality Products: Lessons From a Team That Moved Too Fast",
-        description: "Fast delivery without agile discipline creates hidden quality debt. A practical reflection on how Scrum and Kanban protect product quality and team health.",
-        category: "Agile & Quality",
-        readTime: "6 min",
-        date: "March 14, 2026",
-        slug: "/blog/agile-methodologies-for-quality-products",
-        image: "/images/gallery/bootcamp.png",
-    },
-    {
-        title: "Release Confidence Is a System: How QA Turns Uncertainty Into Predictability",
-        description: "Shipping safely is not luck. It is the result of a clear release contract, risk-based testing, and fast feedback loops owned by the whole team.",
-        category: "Release Quality",
-        readTime: "7 min",
-        date: "March 9, 2026",
-        slug: "/blog/release-confidence-is-a-system",
-        image: "/images/gallery/pyramid.png",
-    },
-    {
-        title: "The Art of Intentional Breaking: Why QA Starts Before the First Line of Code",
-        description: "True quality engineering isn't just about finding bugs; it is about architecting systems that are resilient by design.",
-        category: "Quality Engineering",
-        readTime: "5 min",
-        date: "March 2, 2026",
-        slug: "/blog/the-art-of-intentional-breaking",
-        image: "/images/gallery/manwithcode.png",
-    },
-];
 ---
 
 <BlogLayout
@@ -70,7 +23,9 @@ const articles = [
             href="/"
             class="text-[20px] font-sans font-bold tracking-[-0.04em] text-[var(--foreground-primary)] hover:opacity-70 transition-opacity"
         >
-            Theodore's <span class="text-[var(--foreground-muted)] font-normal">Blogs</span>
+            Theodore's <span class="text-[var(--foreground-muted)] font-normal"
+                >Blogs</span
+            >
         </a>
         <div class="flex items-center gap-4">
             <NavbarControls />
@@ -86,7 +41,10 @@ const articles = [
     <main class="w-full max-w-[960px] mx-auto px-6 pb-32">
         <!-- Page Header -->
         <div class="pt-6 md:pt-12 mb-16 md:mb-24">
-            <p data-blog-i18n-key="blog_overline" class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]">
+            <p
+                data-blog-i18n-key="blog_overline"
+                class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]"
+            >
                 thoughts & insights
             </p>
             <h1
@@ -99,51 +57,80 @@ const articles = [
 
         <!-- Articles List -->
         <div class="space-y-8">
-            {articles.map((article, index) => (
-                <a
-                    href={article.slug}
-                    class="group flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm border border-[var(--border-color)] bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.03)] transition-all duration-500 hover:border-[var(--foreground-primary)]"
-                >
-                    <div class="w-full md:w-[35%] overflow-hidden">
-                        <img
-                            src={article.image}
-                            alt={article.title}
-                            class="h-full w-full object-cover min-h-[200px] grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-                    <div class="flex flex-1 flex-col justify-center p-8 md:p-10">
-                        <div class="mb-4 flex items-center gap-3">
-                            <span data-blog-i18n-key={`article_category_${index}`} class="text-[10px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] px-2 py-1 border border-[var(--border-color)]">
-                                {article.category}
-                            </span>
-                            <span data-blog-i18n-key={`article_readtime_${index}`} class="text-[11px] font-serif text-[var(--foreground-muted)] italic">
-                                {article.readTime}
-                            </span>
+            {
+                articles.map((article, index) => (
+                    <a
+                        href={article.slug}
+                        class="group flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm border border-[var(--border-color)] bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.03)] transition-all duration-500 hover:border-[var(--foreground-primary)]"
+                    >
+                        <div class="w-full md:w-[35%] overflow-hidden">
+                            <img
+                                src={article.image}
+                                alt={article.title}
+                                class="h-full w-full object-cover min-h-[200px] grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </div>
-                        <h2 data-blog-i18n-key={`article_title_${index}`} class="text-[24px] md:text-[28px] font-serif font-medium leading-[1.1] tracking-[-0.02em] text-[var(--foreground-primary)] mb-3 group-hover:underline underline-offset-4">
-                            {article.title}
-                        </h2>
-                        <p data-blog-i18n-key={`article_desc_${index}`} class="text-[14px] md:text-[15px] font-sans font-light leading-[1.6] text-[var(--foreground-secondary)] line-clamp-2">
-                            {article.description}
-                        </p>
-                        <div class="mt-6 flex items-center justify-between">
-                            <span data-blog-i18n-key={`article_date_${index}`} class="text-[12px] font-mono text-[var(--foreground-muted)]">{article.date}</span>
-                            <span class="flex items-center gap-2 text-[12px] font-mono font-medium uppercase tracking-tight text-[var(--foreground-primary)] group-hover:gap-4 transition-all">
-                                <span data-blog-i18n-key={`article_cta_${index}`}>Read</span> <Fragment set:html={icons.arrow} />
-                            </span>
+                        <div class="flex flex-1 flex-col justify-center p-8 md:p-10">
+                            <div class="mb-4 flex items-center gap-3">
+                                <span
+                                    data-blog-i18n-key={`article_category_${index}`}
+                                    class="text-[10px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] px-2 py-1 border border-[var(--border-color)]"
+                                >
+                                    {article.category}
+                                </span>
+                                <span
+                                    data-blog-i18n-key={`article_readtime_${index}`}
+                                    class="text-[11px] font-serif text-[var(--foreground-muted)] italic"
+                                >
+                                    {article.readTime}
+                                </span>
+                            </div>
+                            <h2
+                                data-blog-i18n-key={`article_title_${index}`}
+                                class="text-[24px] md:text-[28px] font-serif font-medium leading-[1.1] tracking-[-0.02em] text-[var(--foreground-primary)] mb-3 group-hover:underline underline-offset-4"
+                            >
+                                {article.title}
+                            </h2>
+                            <p
+                                data-blog-i18n-key={`article_desc_${index}`}
+                                class="text-[14px] md:text-[15px] font-sans font-light leading-[1.6] text-[var(--foreground-secondary)] line-clamp-2"
+                            >
+                                {article.description}
+                            </p>
+                            <div class="mt-6 flex items-center justify-between">
+                                <span
+                                    data-blog-i18n-key={`article_date_${index}`}
+                                    class="text-[12px] font-mono text-[var(--foreground-muted)]"
+                                >
+                                    {article.date}
+                                </span>
+                                <span class="flex items-center gap-2 text-[12px] font-mono font-medium uppercase tracking-tight text-[var(--foreground-primary)] group-hover:gap-4 transition-all">
+                                    <span
+                                        data-blog-i18n-key={`article_cta_${index}`}
+                                    >
+                                        Read
+                                    </span>{" "}
+                                    <Fragment set:html={icons.arrow} />
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            ))}
+                    </a>
+                ))
+            }
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full max-w-[960px] mx-auto px-6 py-8 text-center border-t border-[var(--border-color)]">
-        <p class="text-[10px] text-[var(--foreground-muted)] tracking-[0.08em] uppercase">
-            © {new Date().getFullYear()} {site.author} · Built with Astro
+    <footer
+        class="w-full max-w-[960px] mx-auto px-6 py-8 text-center border-t border-[var(--border-color)]"
+    >
+        <p
+            class="text-[10px] text-[var(--foreground-muted)] tracking-[0.08em] uppercase"
+        >
+            © {new Date().getFullYear()}
+            {site.author} · Built with Astro
         </p>
     </footer>
 </BlogLayout>
