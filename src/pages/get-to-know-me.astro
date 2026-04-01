@@ -1,0 +1,75 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { site, experiences } from "@/data/site.config";
+---
+
+<Layout title="Get to Know Me" description="Background and QA journey of Theodore.">
+  <main class="w-full max-w-[760px] mx-auto px-6 pt-20 pb-16">
+    <a
+      href="/"
+      class="inline-flex mb-8 text-[12px] font-mono uppercase tracking-[0.1em] text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+    >
+      ← Back to Portfolio
+    </a>
+
+    <section class="mb-12">
+      <h1 class="text-[40px] md:text-[56px] font-serif font-medium tracking-[-0.03em] leading-[0.95] text-[var(--foreground-primary)] mb-5">
+        Get to Know Me
+      </h1>
+      <p class="text-[16px] md:text-[18px] leading-[1.75] text-[var(--foreground-secondary)]">
+        I am a Software Quality Assurance Engineer focused on practical testing,
+        reliable automation, and quality-driven release processes. I enjoy
+        turning requirements into clear verification strategies and helping
+        teams ship with confidence.
+      </p>
+    </section>
+
+    <section class="mb-12 border-t border-[var(--border-color)] pt-8">
+      <h2 class="text-[14px] md:text-[16px] font-mono font-medium tracking-[0.1em] text-[var(--foreground-muted)] uppercase mb-5">
+        Journey Snapshot
+      </h2>
+      <div class="space-y-4">
+        {experiences.map((exp) => (
+          <article class="project-bento-card p-5 md:p-6">
+            <h3 class="text-[20px] font-serif text-[var(--foreground-primary)] leading-[1.25] mb-1">
+              {exp.role} @ {exp.company}
+            </h3>
+            <p class="text-[12px] uppercase tracking-[0.1em] font-mono text-[var(--foreground-muted)] mb-3">
+              {exp.period} {exp.type ? `• ${exp.type}` : ""}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-t border-[var(--border-color)] pt-8">
+      <h2 class="text-[14px] md:text-[16px] font-mono font-medium tracking-[0.1em] text-[var(--foreground-muted)] uppercase mb-5">
+        Connect
+      </h2>
+      <div class="flex flex-wrap items-center gap-4 text-[14px]">
+        <a
+          href={site.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-4 text-[var(--foreground-primary)]"
+        >
+          LinkedIn
+        </a>
+        <a
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline underline-offset-4 text-[var(--foreground-primary)]"
+        >
+          GitHub
+        </a>
+        <a
+          href={`mailto:${site.email}`}
+          class="underline underline-offset-4 text-[var(--foreground-primary)]"
+        >
+          {site.email}
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
