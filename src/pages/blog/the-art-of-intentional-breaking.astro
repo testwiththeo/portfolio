@@ -136,12 +136,14 @@ const icons = {
                         data-blog-i18n-key="intro"
                         class="text-[18px] md:text-[20px] leading-[1.7] font-serif text-[var(--foreground-primary)] mb-10 italic opacity-90"
                     >
-                        Quality is never an accident; it is always the result of
-                        high intention, sincere effort, intelligent direction,
-                        and skillful execution. In the world of modern software,
-                        waiting for a feature to be 'finished' before testing it
-                        is a recipe for technical debt and release-day
-                        disasters.
+                        Quality is never an accident, it is always the result
+                        of high intention, sincere effort, intelligent
+                        direction, and skillful execution. In modern software,
+                        if we wait until a feature feels "done" before testing,
+                        we usually pay for it later. And it is rarely cheap.
+                        You know the loop: code done Thursday, QA starts Monday,
+                        bug found Tuesday, fix Wednesday, retest Thursday.
+                        Suddenly one bug eats a week.
                     </p>
 
                     <h2
@@ -154,73 +156,118 @@ const icons = {
                         data-blog-i18n-key="section_1_body"
                         class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
                     >
-                        The most expensive bugs are the ones built into the
-                        requirements. High-quality UX starts with a QA engineer
-                        sitting in the design and grooming sessions, poking
-                        holes in logic before a single developer opens their
-                        IDE. By identifying edge cases early, we don't just find
-                        bugs. We prevent them from ever existing.
+                        The expensive bugs are usually born in requirements,
+                        not in syntax. Shift-Left, for me, is simple: QA should
+                        not appear only at the end and say pass or fail. QA
+                        should be in the room early, asking awkward questions
+                        while the story is still flexible.
                     </p>
 
                     <h2
                         data-blog-i18n-key="section_2_title"
                         class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
                     >
-                        Automation as an Accelerator, Not a Goal
+                        Working Backwards: Start From Failure Risk
                     </h2>
                     <p
                         data-blog-i18n-key="section_2_body"
                         class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
                     >
-                        Many teams fall into the trap of 'automating
-                        everything.' However, true quality engineering
-                        understands that automation is a tool to free up human
-                        creativity for exploratory testing. We build robust E2E
-                        suites with Playwright and Cypress not to replace us,
-                        but to give us the confidence to break things in more
-                        interesting ways.
+                        In the AWS context, Working Backwards starts from the
+                        customer experience, then teams iteratively define what
+                        to build and why that value matters. It is rooted in
+                        customer-centric innovation and strengthened by data,
+                        analytics, and cloud capabilities. In QA, we adapt that
+                        mindset by asking where the customer experience can
+                        break and which risks need to be controlled early.
+                    </p>
+                    <p class="text-[14px] md:text-[15px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8">
+                        <a
+                            data-blog-i18n-key="section_2_source"
+                            href="https://aws.amazon.com/blogs/smb/working-backwards-to-drive-customer-experience-and-smb-innovation-forward/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="underline underline-offset-4 text-[var(--foreground-primary)]"
+                        >
+                            Official reference: AWS SMB Blog — Working
+                            Backwards
+                        </a>
                     </p>
 
                     <h2
                         data-blog-i18n-key="section_3_title"
                         class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
                     >
-                        Building Resilient Systems
+                        Shift-Left in Agile Ceremonies
                     </h2>
                     <p
                         data-blog-i18n-key="section_3_body"
-                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+                        class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-5"
                     >
-                        Modern QA involves understanding the infrastructure. We
-                        look at API contracts, database integrity, and
-                        multi-region synchronization. When we ship global
-                        logistics engines like MuatParts, we aren't just
-                        checking if a button works; we are verifying that a
-                        cross-border transaction won't fail if the GPS signal
-                        flickers for a second in the mountains.
+                        Shift-Left only works when it shows up in daily team
+                        habits, not just in slides. In Agile teams, that means
+                        QA is present across ceremonies, not parked at the tail
+                        end of sprint:
                     </p>
+                    <ul class="space-y-3 mb-8">
+                        <li
+                            data-blog-i18n-key="section_3_point_1"
+                            class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+                        >
+                            Sprint Planning: QA defines acceptance criteria and
+                            test scope.
+                        </li>
+                        <li
+                            data-blog-i18n-key="section_3_point_2"
+                            class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+                        >
+                            Story Refinement: QA raises edge cases and ambiguity
+                            early.
+                        </li>
+                        <li
+                            data-blog-i18n-key="section_3_point_3"
+                            class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+                        >
+                            Three Amigos: Dev, QA, and PO align behavior before
+                            coding.
+                        </li>
+                        <li
+                            data-blog-i18n-key="section_3_point_4"
+                            class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+                        >
+                            During Dev: TDD, static analysis, PR review with
+                            test coverage.
+                        </li>
+                        <li
+                            data-blog-i18n-key="section_3_point_5"
+                            class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+                        >
+                            Sprint Review: QA presents test evidence, not just
+                            "it works."
+                        </li>
+                        <li
+                            data-blog-i18n-key="section_3_point_6"
+                            class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+                        >
+                            Retrospective: QA flags test debt and process gaps.
+                        </li>
+                    </ul>
 
                     <h2
                         data-blog-i18n-key="section_4_title"
                         class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
                     >
-                        The Testing Pyramid in Practice
+                        Prevention Beats Late Detection
                     </h2>
                     <p
                         data-blog-i18n-key="section_4_body"
                         class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
                     >
-                        In theory, everyone knows about the testing pyramid. In
-                        practice, most teams invert it by relying heavily on
-                        manual E2E tests while neglecting unit and integration
-                        layers. A well-architected test suite means your unit
-                        tests catch 80% of regressions in seconds, your
-                        integration tests validate contracts between services,
-                        and your E2E tests focus only on critical user journeys.
-                        It is like building a house: if the foundation is weak,
-                        the roof will always feel risky. This is not just good
-                        practice; it is the difference between deploying with
-                        confidence and deploying with crossed fingers.
+                        Shift-Left does not magically remove defects. It just
+                        changes timing, and timing matters. Unit and integration
+                        checks catch structural mistakes earlier, then focused
+                        E2E confirms high-risk user flows. We are not chasing
+                        perfect software. We are building fewer late surprises.
                     </p>
 
                     <h2
@@ -233,15 +280,11 @@ const icons = {
                         data-blog-i18n-key="section_5_body"
                         class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
                     >
-                        At the end of the day, quality assurance is not a gate
-                        at the end of a sprint; it is a mindset that permeates
-                        every standup, every code review, every deployment
-                        pipeline. When developers write testable code because
-                        they understand why it matters, when product managers
-                        define acceptance criteria with edge cases in mind, and
-                        when the entire team owns quality, that is when you stop
-                        finding bugs and start preventing them. That's the art
-                        of intentional breaking.
+                        Honestly, high-quality products are never a QA solo
+                        project. They come from teams that treat quality as
+                        shared work. Once QA starts before the first line of
+                        code, bugs stop feeling like random bad luck. They
+                        become design feedback.
                     </p>
                 </div>
             </div>
@@ -327,55 +370,83 @@ const icons = {
 <script>
     window.__blogI18n = {
         meta_category: { en: "Quality Engineering", id: "Quality Engineering" },
-        meta_readtime: { en: "5 min", id: "5 menit" },
+        meta_readtime: { en: "6 min", id: "6 menit" },
         title: {
             en: "The Art of Intentional Breaking: Why QA Starts Before the First Line of Code",
             id: "Seni Menguji Secara Intensional: Kenapa QA Dimulai Sebelum Baris Kode Pertama",
         },
         published_date: { en: "March 2, 2026", id: "2 Maret 2026" },
         intro: {
-            en: "Quality is never an accident; it is always the result of high intention, sincere effort, intelligent direction, and skillful execution. In the world of modern software, waiting for a feature to be 'finished' before testing it is a recipe for technical debt and release-day disasters.",
-            id: "Kualitas itu nggak pernah terjadi karena kebetulan. Kualitas lahir dari niat yang jelas, effort yang serius, arahan yang tepat, dan eksekusi yang rapi. Di dunia software modern, nunggu fitur 'selesai total' dulu baru dites biasanya cuma jadi resep utang teknis dan drama di hari rilis.",
+            en: "Quality is never an accident, it is always the result of high intention, sincere effort, intelligent direction, and skillful execution. In modern software, if we wait until a feature feels done before testing, we usually pay for it later. You know the loop: code done Thursday, QA starts Monday, bug found Tuesday, fix Wednesday, retest Thursday. Suddenly one bug eats a week.",
+            id: "Kualitas itu tidak pernah terjadi karena kebetulan. Kualitas lahir dari niat yang tinggi, effort yang tulus, arahan yang cerdas, dan eksekusi yang terampil. Di software modern, kalau kita nunggu fitur terasa benar-benar selesai dulu baru dites, biasanya bayarnya belakangan. Dan seringnya mahal. Polanya familiar: code selesai Kamis, QA mulai Senin, bug ketemu Selasa, fix Rabu, retest Kamis. Tahu-tahu satu bug makan seminggu.",
         },
         section_1_title: {
             en: "Shifting Left: The QA Mindset",
             id: "Shifting Left: Mindset QA yang Lebih Proaktif",
         },
         section_1_body: {
-            en: "The most expensive bugs are the ones built into the requirements. High-quality UX starts with a QA engineer sitting in the design and grooming sessions, poking holes in logic before a single developer opens their IDE. By identifying edge cases early, we don't just find bugs. We prevent them from ever existing.",
-            id: "Bug paling mahal itu biasanya yang sudah kebawa dari tahap requirement. UX yang berkualitas dimulai saat QA ikut dari sesi design dan grooming, lalu menguji logika sebelum developer nulis kode pertama. Waktu edge case ditemukan lebih awal, kita bukan cuma nemu bug, tapi mencegah bug itu lahir sejak awal.",
+            en: "The expensive bugs are usually born in requirements, not in syntax. Shift-Left, for me, is simple: QA should not appear only at the end and say pass or fail. QA should be in the room early, asking awkward questions while the story is still flexible.",
+            id: "Bug yang mahal biasanya lahir dari requirement, bukan dari syntax. Shift-Left buat saya simpel: QA jangan muncul hanya di akhir untuk bilang pass atau fail. QA perlu ada dari awal, ngasih pertanyaan yang kadang bikin tidak nyaman, saat story masih bisa dibentuk.",
         },
         section_2_title: {
-            en: "Automation as an Accelerator, Not a Goal",
-            id: "Automation Itu Akselerator, Bukan Tujuan Akhir",
+            en: "Working Backwards: Start From Failure Risk",
+            id: "Working Backwards: Mulai dari Risiko Kegagalan",
         },
         section_2_body: {
-            en: "Many teams fall into the trap of 'automating everything.' However, true quality engineering understands that automation is a tool to free up human creativity for exploratory testing. We build robust E2E suites with Playwright and Cypress not to replace us, but to give us the confidence to break things in more interesting ways.",
-            id: "Banyak tim jatuh ke jebakan 'otomasi semua hal'. Padahal quality engineering yang matang paham kalau automation itu alat untuk ngebebasin kapasitas manusia supaya bisa eksplorasi lebih dalam. Kita bangun suite E2E yang kuat pakai Playwright dan Cypress bukan buat menggantikan manusia, tapi buat ngasih ruang menguji hal-hal yang lebih kompleks.",
+            en: "In the AWS context, Working Backwards starts from the customer experience, then teams iteratively define what to build and why that value matters. It is rooted in customer-centric innovation and strengthened by data, analytics, and cloud capabilities. In QA, we adapt that mindset by asking where the customer experience can break and which risks need to be controlled early.",
+            id: "Dalam konteks AWS, Working Backwards dimulai dari pengalaman pelanggan, lalu tim secara iteratif menentukan apa yang harus dibangun dan kenapa nilainya penting untuk pelanggan. Pendekatan ini berakar pada inovasi berpusat pada pelanggan dan diperkuat oleh data, analytics, serta kapabilitas cloud. Di QA, mindset ini kami adaptasi dengan bertanya di mana pengalaman pelanggan bisa rusak dan risiko mana yang harus dikendalikan lebih awal.",
+        },
+        section_2_source: {
+            en: "Official reference: AWS SMB Blog — Working Backwards",
+            id: "Referensi resmi: AWS SMB Blog — Working Backwards",
         },
         section_3_title: {
-            en: "Building Resilient Systems",
-            id: "Membangun Sistem yang Tahan Banting",
+            en: "Shift-Left in Agile Ceremonies",
+            id: "Shift-Left di Setiap Ceremony Agile",
         },
         section_3_body: {
-            en: "Modern QA involves understanding the infrastructure. We look at API contracts, database integrity, and multi-region synchronization. When we ship global logistics engines like MuatParts, we aren't just checking if a button works; we are verifying that a cross-border transaction won't fail if the GPS signal flickers for a second in the mountains.",
-            id: "QA modern menuntut pemahaman infrastruktur juga. Kita cek kontrak API, integritas database, sampai sinkronisasi lintas region. Saat ngirim produk logistik global seperti MuatParts, yang kita validasi bukan cuma tombolnya jalan atau nggak, tapi juga apakah transaksi lintas negara tetap aman walau sinyal GPS sempat drop beberapa detik.",
+            en: "Shift-Left only works when it shows up in daily team habits, not just in slides. In Agile teams, that means QA is present across ceremonies, not parked at the tail end of sprint:",
+            id: "Shift-Left cuma jalan kalau hadir di kebiasaan kerja harian, bukan cuma di slide. Di tim Agile, itu berarti QA ikut di berbagai ceremony, bukan diparkir di ujung sprint:",
+        },
+        section_3_point_1: {
+            en: "Sprint Planning: QA defines acceptance criteria and test scope.",
+            id: "Sprint Planning: QA menetapkan acceptance criteria dan ruang lingkup test.",
+        },
+        section_3_point_2: {
+            en: "Story Refinement: QA raises edge cases and ambiguity early.",
+            id: "Story Refinement: QA mengangkat edge case dan ambiguitas lebih awal.",
+        },
+        section_3_point_3: {
+            en: "Three Amigos: Dev, QA, and PO align behavior before coding.",
+            id: "Three Amigos: Dev, QA, dan PO menyelaraskan perilaku sebelum coding.",
+        },
+        section_3_point_4: {
+            en: "During Dev: TDD, static analysis, PR review with test coverage.",
+            id: "Saat Development: TDD, static analysis, PR review dengan cakupan test.",
+        },
+        section_3_point_5: {
+            en: "Sprint Review: QA presents test evidence, not just 'it works.'",
+            id: "Sprint Review: QA menunjukkan evidence pengujian, bukan sekadar 'jalan kok'.",
+        },
+        section_3_point_6: {
+            en: "Retrospective: QA flags test debt and process gaps.",
+            id: "Retrospective: QA menandai test debt dan celah proses.",
         },
         section_4_title: {
-            en: "The Testing Pyramid in Practice",
-            id: "Testing Pyramid dalam Praktik Nyata",
+            en: "Prevention Beats Late Detection",
+            id: "Pencegahan Selalu Lebih Murah dari Deteksi Terlambat",
         },
         section_4_body: {
-            en: "In theory, everyone knows about the testing pyramid. In practice, most teams invert it by relying heavily on manual E2E tests while neglecting unit and integration layers. A well-architected test suite means your unit tests catch 80% of regressions in seconds, your integration tests validate contracts between services, and your E2E tests focus only on critical user journeys. It is like building a house: if the foundation is weak, the roof will always feel risky. This is not just good practice; it is the difference between deploying with confidence and deploying with crossed fingers.",
-            id: "Secara teori semua orang paham testing pyramid, tapi di praktik banyak tim malah kebalik: terlalu bergantung ke E2E manual sambil ngabaikan layer unit dan integration. Test suite yang sehat berarti unit test nangkep mayoritas regression dalam hitungan detik, integration test memastikan kontrak antarlayanan aman, dan E2E fokus di journey user yang paling kritis. Ibarat bangun rumah, kalau fondasi lemah, atapnya bakal selalu terasa berisiko. Ini bukan sekadar best practice, tapi pembeda antara deploy dengan percaya diri dan deploy sambil berharap-harap cemas.",
+            en: "Shift-Left does not magically remove defects. It just changes timing, and timing matters. Unit and integration checks catch structural mistakes earlier, then focused E2E confirms high-risk user flows. We are not chasing perfect software. We are building fewer late surprises.",
+            id: "Shift-Left tidak ajaib menghapus defect. Dia cuma mengubah timing, dan timing itu penting. Unit dan integration check menangkap kesalahan struktural lebih awal, lalu E2E yang fokus mengonfirmasi alur user berisiko tinggi. Kita bukan lagi mengejar software sempurna. Kita sedang mengurangi kejutan telat.",
         },
         section_5_title: {
             en: "Quality as a Culture, Not a Phase",
             id: "Quality Itu Budaya, Bukan Fase",
         },
         section_5_body: {
-            en: "At the end of the day, quality assurance is not a gate at the end of a sprint; it is a mindset that permeates every standup, every code review, every deployment pipeline. When developers write testable code because they understand why it matters, when product managers define acceptance criteria with edge cases in mind, and when the entire team owns quality, that is when you stop finding bugs and start preventing them. That's the art of intentional breaking.",
-            id: "Pada akhirnya, quality assurance bukan gerbang di ujung sprint, tapi mindset yang hadir di standup, code review, dan deployment pipeline. Saat developer menulis kode yang testable karena paham alasannya, product manager menyusun acceptance criteria sambil memikirkan edge case, dan seluruh tim merasa punya kualitas, di titik itu kita berhenti sekadar mencari bug lalu mulai mencegahnya. Di situlah seni intentional breaking.",
+            en: "Honestly, high-quality products are never a QA solo project. They come from teams that treat quality as shared work. Once QA starts before the first line of code, bugs stop feeling like random bad luck. They become design feedback.",
+            id: "Jujur saja, produk berkualitas tinggi tidak pernah jadi proyek solo QA. Kualitas lahir dari tim yang menganggap ini kerja bareng. Saat QA mulai sebelum baris kode pertama, bug berhenti terasa seperti nasib buruk acak. Bug jadi feedback desain.",
         },
         author_role: {
             en: "Software Quality Assurance Engineer",
