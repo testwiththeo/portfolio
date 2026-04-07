@@ -1,60 +1,67 @@
-# Theodores Portfolio - QA Engineer
+# Theodore Portfolio
 
-Personal portfolio website built with Astro and TailwindCSS, deployed to VPS.
+Personal portfolio and technical blog for a QA / Quality Engineering profile, built with Astro and Tailwind CSS.
 
-## 🚀 Tech Stack
+Live site: https://theodores.dev
 
-- **Astro** - Static site generator
-- **TailwindCSS** - Styling
-- **GitHub Actions** - CI/CD deployment to VPS
+## Tech Stack
 
-## 🛠️ Setup Local
+- Astro 5
+- Tailwind CSS
+- React (for selected UI components)
+- Radix UI primitives
+
+## What This Repo Contains
+
+- Portfolio landing page with experience, projects, and contact sections
+- Blog pages with EN/ID language switching support
+- Project case studies and QA documentation samples
+- Static assets for gallery, OG images, and downloadable docs
+
+## Local Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
+```
 
-# Build for production
+Open http://localhost:4321
+
+## Build and Preview
+
+```bash
 npm run build
+npm run preview
 ```
 
-## 📁 Project Structure
+Build output is generated in `dist/`.
 
-```
-/
+## Project Structure
+
+```text
+.
+├── public/                 # Static assets
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-├── public/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-└── package.json
+│   ├── components/         # UI and reusable Astro/React components
+│   ├── content/            # Case studies and project content
+│   ├── data/               # Site config and article metadata
+│   ├── layouts/            # Main layout and blog layout
+│   ├── pages/              # Routes (home, blog, project detail pages)
+│   └── styles/             # Global styles
+├── package.json
+└── astro.config.mjs
 ```
 
-## 🔧 Deployment
+## Blog Authoring Notes
 
-Automatic deployment to VPS via GitHub Actions when pushing to main branch.
+- Article metadata is stored in `src/data/articles.ts`
+- Article pages live in `src/pages/blog/*.astro`
+- Raw draft notes can be stored in `src/pages/blog/raw/`
+- Blog language strings are defined per page via `window.__blogI18n`
 
-### Secrets Required (GitHub Repo Settings)
+## Common Update Paths
 
-- `VPS_HOST`: 150.109.23.23
-- `VPS_USER`: root
-- `VPS_SSH_KEY`: Private SSH key
-
-## 📝 Customization
-
-Edit `src/pages/index.astro` to update portfolio content.
-
-## 🔗 Live Site
-
-- **URL**: https://theodores.dev
-
----
-
-Built by Theodores | QA Engineer
+- Update homepage copy and sections: `src/pages/index.astro`
+- Add or update blog metadata: `src/data/articles.ts`
+- Edit blog listing UI/text: `src/pages/blog/index.astro`
+- Adjust blog layout behavior (theme/lang): `src/layouts/BlogLayout.astro`
