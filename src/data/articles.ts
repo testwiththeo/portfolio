@@ -1,5 +1,15 @@
 export const articles = [
     {
+        title: "Designing Product Quality Before Code: A Practical Three Amigos + BDD Framework",
+        description:
+            "A product-quality perspective on how Three Amigos and BDD create clearer behavior expectations before implementation begins.",
+        category: "Product Quality",
+        readTime: "8 min",
+        date: "April 7, 2026",
+        slug: "/blog/the-30-minute-meeting-that-saves-2-days-of-rework",
+        image: "/images/gallery/three.jpg",
+    },
+    {
         title: "The Zero-Bug Myth in Fast-Moving Teams: Why Quality Is About Risk, Not Perfection",
         description:
             "A reflection from startup QA reality: tight timelines, huge bug backlogs, and the pressure to ship. Quality improves when teams manage risk, not chase impossible perfection.",
@@ -42,9 +52,9 @@ export const articles = [
     {
         title: "The Art of Intentional Breaking: Why QA Starts Before the First Line of Code",
         description:
-            "True quality engineering isn't just about finding bugs; it is about architecting systems that are resilient by design.",
+            "Shift-Left quality starts before coding: align in ceremonies, think from failure risk, and treat QA as a product partner from day one.",
         category: "Quality Engineering",
-        readTime: "5 min",
+        readTime: "6 min",
         date: "March 2, 2026",
         slug: "/blog/the-art-of-intentional-breaking",
         image: "/images/gallery/manwithcode.png",

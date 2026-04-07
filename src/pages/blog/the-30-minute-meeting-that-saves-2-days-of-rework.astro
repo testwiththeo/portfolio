@@ -1,0 +1,578 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import NavbarControls from "@/components/NavbarControls.astro";
+import { site } from "@/data/site.config";
+import { articles } from "@/data/articles";
+
+const currentSlug = "/blog/the-30-minute-meeting-that-saves-2-days-of-rework";
+const articleData = articles.find((a) => a.slug === currentSlug);
+
+if (!articleData) {
+  throw new Error(`Article data not found for slug: ${currentSlug}`);
+}
+
+const {
+  title,
+  description,
+  image,
+  readTime,
+  category,
+  date: publishedDate,
+} = articleData;
+const author = "Theodore";
+
+const icons = {
+  arrow: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`,
+};
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  type="article"
+  image={image}
+  imageAlt={title}
+  publishedTime={publishedDate}
+  modifiedTime={publishedDate}
+  section={category}
+  tags={[category, "BDD", "Three Amigos", "Quality Engineering"]}
+>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header
+    class="w-full max-w-[960px] mx-auto px-6 py-10 flex justify-between items-center bg-transparent relative z-10"
+  >
+    <a
+      href="/"
+      class="text-[20px] font-sans font-bold tracking-[-0.04em] text-[var(--foreground-primary)] hover:opacity-70 transition-opacity"
+    >
+      Theodore's <span class="text-[var(--foreground-muted)] font-normal"
+        >Blog</span
+      >
+    </a>
+    <div class="flex items-center gap-4">
+      <NavbarControls />
+      <a
+        href="/blog"
+        class="text-[12px] font-sans font-medium uppercase tracking-[0.1em] text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+      >
+        ← All Articles
+      </a>
+    </div>
+  </header>
+
+  <main class="w-full max-w-[960px] mx-auto px-6 pb-16">
+    <article class="pt-6 md:pt-12 fade-in">
+      <div class="mb-12 md:mb-16">
+        <p
+          class="text-[13px] md:text-[14px] font-mono uppercase text-[var(--foreground-muted)] mb-6 tracking-[0.15em]"
+        >
+          <span data-blog-i18n-key="meta_category">{category}</span>
+          <span class="mx-3 opacity-30">/</span>
+          <span data-blog-i18n-key="meta_readtime">{readTime}</span>
+        </p>
+        <h1
+          data-blog-i18n-key="title"
+          class="text-[44px] md:text-[64px] lg:text-[72px] font-sans font-medium tracking-tight leading-[0.95] text-[var(--foreground-primary)] max-w-[850px]"
+        >
+          {title}
+        </h1>
+      </div>
+
+      <div
+        class="w-full h-auto mb-16 md:mb-24 overflow-hidden relative fade-in fade-in-delay-2 rounded-sm"
+      >
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-auto object-cover aspect-[16/9] md:aspect-[21/9] scale-[1.01]"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row gap-12 md:gap-24 fade-in fade-in-delay-4"
+      >
+        <aside class="w-full md:w-[160px] flex-shrink-0">
+          <div class="md:sticky md:top-12 space-y-8">
+            <div class="border-t border-[var(--border-color)] pt-3">
+              <p
+                class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1"
+              >
+                Published
+              </p>
+              <p
+                data-blog-i18n-key="published_date"
+                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+              >
+                {publishedDate}
+              </p>
+            </div>
+            <div class="border-t border-[var(--border-color)] pt-3">
+              <p
+                class="text-[12px] md:text-[13px] font-serif text-[var(--foreground-muted)] mb-1"
+              >
+                Author
+              </p>
+              <p
+                class="text-[14px] md:text-[15px] font-sans font-medium tracking-tight text-[var(--foreground-primary)]"
+              >
+                {author}
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="flex-1 max-w-[640px]">
+          <p
+            data-blog-i18n-key="intro"
+            class="text-[18px] md:text-[20px] leading-[1.7] font-serif text-[var(--foreground-primary)] mb-10 italic opacity-90"
+          >
+            High-quality products are rarely the result of late-stage bug
+            hunting. They are usually built through early alignment, explicit
+            behavior rules, and shared ownership of quality across product,
+            engineering, and QA.
+          </p>
+
+          <h2
+            data-blog-i18n-key="section_1_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            Why This Keeps Happening
+          </h2>
+          <p
+            data-blog-i18n-key="section_1_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+          >
+            Product quality often drops when stories look clear on paper but
+            still hide behavioral gaps. Product teams think in outcomes,
+            engineers think in implementation, and QA thinks in risk. If those
+            views are not aligned before coding begins, teams can ship features
+            that pass development checks but fail real user expectations.
+          </p>
+
+          <h2
+            data-blog-i18n-key="section_2_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            Three Amigos Is a Risk-Reduction System
+          </h2>
+          <p
+            data-blog-i18n-key="section_2_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+          >
+            Three Amigos should be seen as a product-quality control point, not
+            an administrative ritual. One PO, one engineer, one QA align on
+            intent, edge cases, and acceptance boundaries before implementation.
+            The purpose is to increase confidence that what gets built is both
+            functional and valuable for users.
+          </p>
+
+          <h2
+            data-blog-i18n-key="section_3_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            BDD Gives One Shared Language
+          </h2>
+          <p
+            data-blog-i18n-key="section_3_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+          >
+            BDD matters because it turns alignment into testable product
+            behavior. Given/When/Then is not about sounding technical. It gives
+            product and engineering one shared language to define how the system
+            should behave under normal and edge conditions.
+          </p>
+
+          <h2
+            data-blog-i18n-key="section_3b_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            What Three Amigos Is, Where It Came From, and Why It Exists
+          </h2>
+          <p
+            data-blog-i18n-key="section_3b_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+          >
+            Three Amigos is a lightweight collaboration practice where product,
+            engineering, and QA refine one story together before implementation.
+            It became popular in Agile delivery teams as organizations learned
+            that many defects were not coding failures, but requirement gaps.
+            The practice grew alongside BDD adoption because teams needed a
+            recurring forum to translate business intent into shared behavior.
+            In short, Three Amigos was created to reduce ambiguity early and
+            raise product quality before code is written.
+          </p>
+
+          <h2
+            data-blog-i18n-key="references_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            References
+          </h2>
+          <ul class="space-y-3 mb-8">
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <a
+                href="https://agilealliance.org/glossary/three-amigos/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Agile Alliance — Three Amigos (Glossary)
+              </a>
+            </li>
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <a
+                href="https://dannorth.net/blog/introducing-bdd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Dan North — Introducing BDD (2006)
+              </a>
+            </li>
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <a
+                href="https://cucumber.io/docs/bdd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Cucumber Docs — Behaviour-Driven Development
+              </a>
+            </li>
+            <li class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]">
+              <a
+                href="https://cucumber.io/docs/guides/overview/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-4 text-[var(--foreground-primary)]"
+              >
+                Cucumber Docs — Introduction and Gherkin Overview
+              </a>
+            </li>
+          </ul>
+
+          <h2
+            data-blog-i18n-key="section_4_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            From Ambiguous Story to Production-Ready Scope
+          </h2>
+          <p
+            data-blog-i18n-key="section_4_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-5"
+          >
+            Consider a password reset story that starts as: "User can reset
+            password via email." With proper refinement, the same story evolves
+            into clear product behavior with explicit quality boundaries: token
+            expiry, single-use links, rate limits, non-enumeration messages, and
+            session invalidation.
+          </p>
+          <pre
+            class="text-[13px] leading-[1.8] p-4 bg-[var(--background-subtle)] border border-[var(--border-color)] rounded-sm overflow-x-auto mb-8"
+          ><code>Before: "User can reset password via email"
+After:
+- Reset link expires after 15 minutes (single-use)
+- Max 3 requests per hour
+- Unknown email returns generic response
+- Existing sessions are invalidated after success</code></pre>
+
+          <h2
+            data-blog-i18n-key="section_5_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            Implementation Without Noise
+          </h2>
+          <p
+            data-blog-i18n-key="section_5_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-5"
+          >
+            Implementation should stay pragmatic. Gherkin captures behavior.
+            Step definitions connect behavior to automation. Page Objects keep UI
+            interactions reusable. World objects keep scenario state clean.
+            Living documentation keeps business and engineering aligned around
+            the same quality contract. The value is traceability from product
+            intent to release evidence.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li
+              data-blog-i18n-key="section_5_point_1"
+              class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+            >
+              Gherkin: business-readable behavior contract
+            </li>
+            <li
+              data-blog-i18n-key="section_5_point_2"
+              class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+            >
+              Step definitions: stable bridge to Playwright/Cucumber
+            </li>
+            <li
+              data-blog-i18n-key="section_5_point_3"
+              class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+            >
+              Reports: living docs the whole team can validate
+            </li>
+          </ul>
+
+          <h2
+            data-blog-i18n-key="section_6_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            Common Traps and Better Moves
+          </h2>
+          <p
+            data-blog-i18n-key="section_6_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-5"
+          >
+            A common failure pattern is fake BDD: development ends, then Gherkin
+            is written as documentation theater. Real BDD happens before
+            implementation. Another trap is imperative scenarios that read like
+            click scripts; these break when UI changes. Strong product-quality
+            scenarios stay declarative and business-facing.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li
+              data-blog-i18n-key="section_6_point_1"
+              class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+            >
+              Do example mapping first. Red cards are blockers, not notes.
+            </li>
+            <li
+              data-blog-i18n-key="section_6_point_2"
+              class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+            >
+              One scenario should validate one behavior, not everything at once.
+            </li>
+            <li
+              data-blog-i18n-key="section_6_point_3"
+              class="text-[15px] md:text-[16px] leading-[1.75] text-[var(--foreground-secondary)]"
+            >
+              Prefer "what should happen," not "which button to click."
+            </li>
+          </ul>
+
+          <h2
+            data-blog-i18n-key="section_7_title"
+            class="text-[18px] md:text-[20px] font-sans font-medium tracking-tight text-[var(--foreground-primary)] mt-12 mb-4"
+          >
+            Final Reflection: Aim for Zero Surprise
+          </h2>
+          <p
+            data-blog-i18n-key="section_7_body"
+            class="text-[16px] md:text-[18px] leading-[1.8] font-serif text-[var(--foreground-secondary)] mb-8"
+          >
+            The real goal is not zero bugs. The goal is high-quality product
+            behavior that remains predictable as the system evolves. A practical
+            starting point is simple: align early with Three Amigos, define
+            behavior in shared BDD language, and keep living documentation
+            updated as part of delivery.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <div
+      class="mt-20 border-t border-[var(--border-color)] pt-12 max-w-[640px] ml-auto md:ml-[184px]"
+    >
+      <div
+        class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+      >
+        <div>
+          <p
+            class="text-[12px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] mb-2"
+          >
+            Written by
+          </p>
+          <p
+            class="text-[18px] font-sans font-medium text-[var(--foreground-primary)]"
+          >
+            {author}
+          </p>
+          <p
+            data-blog-i18n-key="author_role"
+            class="text-[14px] font-serif text-[var(--foreground-secondary)] mt-1"
+          >
+            Software Quality Assurance Engineer
+          </p>
+        </div>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-5 py-2.5 text-[12px] font-mono font-medium uppercase tracking-widest border border-[var(--border-color)] rounded-full text-[var(--foreground-primary)] hover:bg-[var(--foreground-primary)] hover:text-[var(--background-warm)] transition-all"
+        >
+          View Portfolio <span set:html={icons.arrow}></span>
+        </a>
+      </div>
+
+      <div
+        class="flex items-center gap-4 mt-8 pt-8 border-t border-[var(--border-color)]"
+      >
+        <a
+          href="/blog/"
+          class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+        >
+          ← All Articles
+        </a>
+        <span class="text-[var(--border-color)]">·</span>
+        <a
+          href={site.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+        >
+          LinkedIn
+        </a>
+        <span class="text-[var(--border-color)]">·</span>
+        <a
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[13px] font-sans text-[var(--foreground-muted)] hover:text-[var(--foreground-primary)] transition-colors"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer
+    class="w-full max-w-[960px] mx-auto px-6 py-8 text-center border-t border-[var(--border-color)] mt-8"
+  >
+    <p
+      class="text-[10px] text-[var(--foreground-muted)] tracking-[0.08em] uppercase"
+    >
+      © {new Date().getFullYear()}
+      {site.author} · Built with Astro
+    </p>
+  </footer>
+</BlogLayout>
+
+<script>
+  window.__blogI18n = {
+    meta_category: { en: "Product Quality", id: "Kualitas Produk" },
+    meta_readtime: { en: "8 min", id: "8 menit" },
+    title: {
+      en: "Designing Product Quality Before Code: A Practical Three Amigos + BDD Framework",
+      id: "Merancang Kualitas Produk Sebelum Coding: Framework Praktis Three Amigos + BDD",
+    },
+    published_date: { en: "April 7, 2026", id: "7 April 2026" },
+    intro: {
+      en: "High-quality products are rarely the result of late-stage bug hunting. They are usually built through early alignment, explicit behavior rules, and shared ownership of quality across product, engineering, and QA.",
+      id: "Produk berkualitas tinggi jarang lahir dari perburuan bug di tahap akhir. Biasanya kualitas dibangun lewat alignment sejak awal, aturan perilaku yang jelas, dan kepemilikan kualitas bersama antara product, engineering, dan QA.",
+    },
+    section_1_title: {
+      en: "Why This Keeps Happening",
+      id: "Kenapa Ini Terus Terjadi",
+    },
+    section_1_body: {
+      en: "Product quality often drops when stories look clear on paper but still hide behavioral gaps. Product teams think in outcomes, engineers think in implementation, and QA thinks in risk. If those views are not aligned before coding begins, teams can ship features that pass development checks but fail real user expectations.",
+      id: "Kualitas produk sering turun saat story terlihat jelas di dokumen, tetapi masih menyimpan celah perilaku. Tim product berpikir tentang outcome, engineer tentang implementasi, dan QA tentang risiko. Jika sudut pandang ini tidak selaras sebelum coding dimulai, fitur bisa lolos pengecekan development tetapi gagal memenuhi ekspektasi pengguna.",
+    },
+    section_2_title: {
+      en: "Three Amigos as a Product-Quality Control Point",
+      id: "Three Amigos sebagai Titik Kontrol Kualitas Produk",
+    },
+    section_2_body: {
+      en: "Three Amigos should be seen as a product-quality control point, not an administrative ritual. One PO, one engineer, one QA align on intent, edge cases, and acceptance boundaries before implementation. The purpose is to increase confidence that what gets built is both functional and valuable for users.",
+      id: "Three Amigos sebaiknya diposisikan sebagai titik kontrol kualitas produk, bukan ritual administratif. Satu PO, satu engineer, dan satu QA menyelaraskan intent, edge case, dan batas acceptance sebelum implementasi. Tujuannya adalah meningkatkan keyakinan bahwa yang dibangun benar-benar fungsional dan bernilai untuk pengguna.",
+    },
+    section_3_title: {
+      en: "BDD Gives One Shared Language",
+      id: "BDD Memberi Satu Bahasa Bersama",
+    },
+    section_3_body: {
+      en: "BDD matters because it turns alignment into testable product behavior. Given/When/Then is not about sounding technical. It gives product and engineering one shared language to define how the system should behave under normal and edge conditions.",
+      id: "BDD penting karena mengubah alignment menjadi perilaku produk yang bisa diuji. Given/When/Then bukan soal terdengar teknis. Ini memberi product dan engineering satu bahasa bersama untuk mendefinisikan bagaimana sistem harus berperilaku pada kondisi normal maupun edge case.",
+    },
+    section_3b_title: {
+      en: "What Three Amigos Is, Where It Came From, and Why It Exists",
+      id: "Apa Itu Three Amigos, Dari Mana Asalnya, dan Kenapa Dibuat",
+    },
+    section_3b_body: {
+      en: "Three Amigos is a lightweight collaboration practice where product, engineering, and QA refine one story together before implementation. It became popular in Agile delivery teams as organizations learned that many defects were not coding failures, but requirement gaps. The practice grew alongside BDD adoption because teams needed a recurring forum to translate business intent into shared behavior. In short, Three Amigos was created to reduce ambiguity early and raise product quality before code is written.",
+      id: "Three Amigos adalah praktik kolaborasi ringan di mana product, engineering, dan QA menyempurnakan satu story bersama sebelum implementasi. Praktik ini makin populer di tim Agile saat organisasi menyadari banyak defect bukan murni kegagalan coding, melainkan celah requirement. Three Amigos berkembang seiring adopsi BDD karena tim butuh forum rutin untuk menerjemahkan intent bisnis menjadi behavior bersama. Singkatnya, Three Amigos dibuat untuk mengurangi ambiguitas sejak awal dan meningkatkan kualitas produk sebelum kode ditulis.",
+    },
+    references_title: {
+      en: "References",
+      id: "Referensi",
+    },
+    section_4_title: {
+      en: "From Ambiguous Story to Production-Ready Scope",
+      id: "Dari Story Ambigu ke Scope yang Siap Production",
+    },
+    section_4_body: {
+      en: "A password reset story often starts as: user can reset password via email. With proper refinement, the same story evolves into clear product behavior with explicit quality boundaries: token expiry, single-use links, rate limits, non-enumeration messages, and session invalidation.",
+      id: "Story password reset sering dimulai dari kalimat: user bisa reset password via email. Dengan refinement yang tepat, story yang sama berkembang menjadi perilaku produk yang jelas dengan batas kualitas yang eksplisit: masa berlaku token, link sekali pakai, rate limit, pesan anti-enumeration, dan invalidasi sesi.",
+    },
+    section_5_title: {
+      en: "Implementation Without Noise",
+      id: "Implementasi yang Praktis Tanpa Noise",
+    },
+    section_5_body: {
+      en: "Implementation should stay pragmatic. Gherkin captures behavior. Step definitions connect behavior to automation. Page Objects keep UI interactions reusable. World objects keep scenario state clean. Living documentation keeps business and engineering aligned around the same quality contract. The value is traceability from product intent to release evidence.",
+      id: "Implementasi sebaiknya tetap pragmatis. Gherkin menangkap behavior. Step definitions menghubungkan behavior ke automation. Page Object menjaga interaksi UI tetap reusable. World object menjaga state skenario tetap rapi. Living documentation menjaga business dan engineering tetap selaras pada kontrak kualitas yang sama. Nilai utamanya adalah traceability dari intent produk ke bukti rilis.",
+    },
+    section_5_point_1: {
+      en: "Gherkin: business-readable behavior contract",
+      id: "Gherkin: kontrak perilaku yang bisa dibaca bisnis",
+    },
+    section_5_point_2: {
+      en: "Step definitions: stable bridge to Playwright/Cucumber",
+      id: "Step definitions: jembatan stabil ke Playwright/Cucumber",
+    },
+    section_5_point_3: {
+      en: "Reports: living docs the whole team can validate",
+      id: "Report: living docs yang bisa divalidasi seluruh tim",
+    },
+    section_6_title: {
+      en: "Common Traps and Better Moves",
+      id: "Jebakan Umum dan Langkah yang Lebih Tepat",
+    },
+    section_6_body: {
+      en: "A common failure pattern is fake BDD: development ends, then Gherkin is written as documentation theater. Real BDD happens before implementation. Another trap is imperative scenarios that read like click scripts; these break when UI changes. Strong product-quality scenarios stay declarative and business-facing.",
+      id: "Pola gagal yang umum adalah fake BDD: development selesai, lalu Gherkin ditulis hanya sebagai formalitas dokumentasi. BDD yang nyata terjadi sebelum implementasi. Jebakan lain adalah skenario imperatif yang seperti script klik; ini mudah patah saat UI berubah. Skenario kualitas produk yang kuat harus tetap deklaratif dan berorientasi bisnis.",
+    },
+    section_6_point_1: {
+      en: "Do example mapping first. Red cards are blockers, not notes.",
+      id: "Mulai dari example mapping. Kartu merah adalah blocker, bukan catatan biasa.",
+    },
+    section_6_point_2: {
+      en: "One scenario should validate one behavior, not everything at once.",
+      id: "Satu skenario cukup untuk satu behavior, bukan semua hal sekaligus.",
+    },
+    section_6_point_3: {
+      en: "Prefer what should happen, not which button to click.",
+      id: "Utamakan apa yang harus terjadi, bukan tombol mana yang harus diklik.",
+    },
+    section_7_title: {
+      en: "Final Reflection: Build for Product Quality, Not Perfection Theater",
+      id: "Refleksi Akhir: Bangun Kualitas Produk, Bukan Teater Kesempurnaan",
+    },
+    section_7_body: {
+      en: "The real goal is not zero bugs. The goal is high-quality product behavior that remains predictable as the system evolves. A practical starting point is simple: align early with Three Amigos, define behavior in shared BDD language, and keep living documentation updated as part of delivery.",
+      id: "Target sebenarnya bukan zero bug. Targetnya adalah perilaku produk berkualitas tinggi yang tetap terprediksi saat sistem berkembang. Titik mulainya sederhana: alignment lebih awal dengan Three Amigos, definisikan behavior dengan bahasa BDD yang sama, dan jaga living documentation tetap diperbarui sebagai bagian dari delivery.",
+    },
+    author_role: {
+      en: "Software Quality Assurance Engineer",
+      id: "Software Quality Assurance Engineer",
+    },
+  };
+
+  const currentLang = localStorage.getItem("lang") === "id" ? "id" : "en";
+  if (typeof window.__applyBlogLang === "function")
+    window.__applyBlogLang(currentLang);
+
+  const progressBar = document.getElementById("scroll-progress") as HTMLElement;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressBar)
+        progressBar.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
+    },
+    { passive: true }
+  );
+</script>
